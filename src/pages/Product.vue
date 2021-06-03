@@ -34,7 +34,6 @@ export default {
     };
   },
   created() {
-    //console.log({route: this.$route, id: this.$route.params.id})
     let id = this.$route.params.id;
     this.product = this.$store.getters.getProduct(id);
   },
