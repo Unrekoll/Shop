@@ -1,5 +1,5 @@
 {
-  "name": "shop",
+  "name": "todo",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-vuex": "^5.0.4",
     "@vue/cli-service": "~4.5.0",
     "node-sass": "^5.0.0",
     "sass-loader": "10.1.1",

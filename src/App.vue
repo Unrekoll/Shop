@@ -4,14 +4,20 @@
       <div class="navbar">
         <div class="container">
           <div class="navbar-content">
-            <div class="logo">Vue-Cli</div>
+            <div class="logo">Todo list</div>
             <ul class="navbar-list">
-              <li class="navbar-item" v-for="link in links" :key="link.title">
+              <li class="navbar-item">
+                <router-link @click.native="handleAuthClick"
+                  class="navbar-link"
+                  :to="'/login'"
+                  >{{ authButton }}</router-link
+                >
+              </li>
+              <li class="navbar-item">
                 <router-link
                   class="navbar-link"
-                  title="link.title"
-                  :to="link.url"
-                  >{{ link.title }}</router-link
+                  :to="'/todo'"
+                  >Todo</router-link
                 >
               </li>
             </ul>
@@ -25,15 +31,26 @@
 
 
 <script>
+import { mapState, mapActions } from 'vuex'
 export default {
-  data() {
-    return {
-      links: [
-        { title: "Home", url: "/" },
-        { title: "Shop", url: "/shop" },
-      ],
-    };
+  computed: {
+    authButton() {
+       return this.authToken ?'Log out':'Login'
+    },
+    ...mapState({
+      authToken: state => state.authToken
+    })
+    
   },
+  methods: {
+    handleAuthClick(){
+      this.setAuthToken(null)
+    },
+    ...mapActions([
+        'setAuthToken'
+      ])
+  },
+
 };
 </script>
 
